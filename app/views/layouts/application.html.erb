@@ -1,14 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scps118</title>
+  <title>PS-118</title>
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div id="wrapper">
+  <!--Sidebar-->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+    <ul class="nav sidebar-nav">
+      <li class="sidebar-brand"><a href="#">PS-Sidekick</a></li>                                
+      <li><%=link_to "Jada", { controller: "jada", action: "index"}%></li>
+      <li><a href="#">Search Google</a></li>
+      <!-- < %if logged_in? %> -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><!--< %= current_user.username %>--> TEST<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">User configerations</li>
+            <!--< % if current_user.admin?  %>
+              <li>< %=link_to "User Management", { controller: "users", action: "index"}%></li>
+            < % end %>-->
+            <li><%=link_to "Settings", { controller: "users", action: "settings" }%></li>
+            <li><%=link_to "Log out", { controller: "sessions", action: "destroy"}%></li>
+          </ul>
+        </li>
+      <!--< %else%>
+        <li>< %=link_to "Log in", { controller: "sessions", action: "new"}%></li>
+      < %end%>-->
+    </ul>
+  </nav>
+  
+  <!--Main Content-->
+  <div id="page-content-wrapper">        
+    <nav class="navbar-inner navbar-inverse navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%=link_to "PS-118", { controller: "gerald", action: "index"}, class:"navbar-brand"  %>
+        </div>
+      
+        <div id="navbar" class="navbar-collapse collapse">            
+          <ul class="nav navbar-nav navbar-right">
+           <!--< %if logged_in? %>-->
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle ps-nav-link" data-toggle="dropdown" role="button" aria-expanded="false"><%=image_tag('Gerald_G.png', class:'ps-nav-icons0', alt:'Gerald Gang') %>
+                <i class="glyphicon glyphicon-th-large"></i></a>
+    	           <ul class="dropdown-menu" role="menu" id="gerald-drop">
+    	            	<li><%=link_to (image_tag('silo/Gerald.png', class:'ps-nav-icons1', alt:'Gerald')+"Gerald").html_safe, { controller: "gerald", action: "index"}, class:"navbar-brand nav-txt"%></li>
+    	            	<li><%=link_to (image_tag('silo/Arnold.png', class:'ps-nav-icons1', alt:'Arnold')+"Arnold").html_safe, { controller: "gerald", action: "arnold"}, class:"navbar-brand nav-txt"%></li>
+    	              <li><%=link_to (image_tag('silo/Sid.png', class:'ps-nav-icons1', alt:'Sid')+"Sid").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>	                  
+    	          </ul>
+            </li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle ps-nav-link" data-toggle="dropdown" role="button" aria-expanded="false"><%=image_tag('Brainy_G.png', class:'ps-nav-icons0', alt:'Brainy Gang') %>
+                <i class="glyphicon glyphicon-cloud"></i></a>
+    	           <ul class="dropdown-menu" role="menu" id="brainy-drop">
+    	            	<li><%=link_to (image_tag('silo/Brainy.png', class:'ps-nav-icons1', alt:'Brainy')+"Brainy").html_safe, { controller: "brainy", action: "index"}, class:"navbar-brand nav-txt"%></li>
+    	              <li><%=link_to (image_tag('silo/Eugene.png', class:'ps-nav-icons1', alt:'Eugene')+"Eugene").html_safe, { controller: "brainy", action: "eugene"}, class:"navbar-brand nav-txt"%></li>
+    	          </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle ps-nav-link" data-toggle="dropdown" role="button" aria-expanded="false"><%=image_tag('Helga_G.png', class:'ps-nav-icons0', alt:'Helga Gang') %>
+                <i class="glyphicon glyphicon-map-marker"></i></a>
+    	           <ul class="dropdown-menu" role="menu" id="helga-drop"> 
+    	            	<li><%=link_to (image_tag('silo/Helga.png', class:'ps-nav-icons1', alt:'Helga')+"Helga").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>
+    	              <li><%=link_to (image_tag('silo/ChocolateBoy.png', class:'ps-nav-icons1', alt:'Chocolate Boy')+"Chocolate Boy").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>
+    	          </ul>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle ps-nav-link" data-toggle="dropdown" role="button" aria-expanded="false"><%=image_tag('Phoebi_G.png', class:'ps-nav-icons0', alt:'Phoebi Gang') %>
+                <i class="glyphicon glyphicon-send"></i></a>
+    	           <ul class="dropdown-menu" role="menu" id="phoebi-drop">
+    	            	<li><%=link_to (image_tag('silo/Phoebi.png', class:'ps-nav-icons1', alt:'Phoebi')+"Phoebi").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>
+    	              <li><%=link_to (image_tag('silo/HarveyTM.png', class:'ps-nav-icons1', alt:'Harvey The Mailman')+"Harvey The Mailman").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>
+    	              <li><%=link_to (image_tag('silo/StoopKid.png', class:'ps-nav-icons1', alt:'Stoop Kid')+"Stoop Kid").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>
+    	          </ul>
+            </li>
+          <!--< %else%>
+            <li>< %=link_to "Log in", { controller: "sessions", action: "new"}%></li>
+          < %end%>-->
+          </ul>
+        </div><!--/.nav-collapse -->        
+        
+      </div><!--/.container-fluid -->
+    </nav>
+    <button type="button" class="hamburger is-closed" data-toggle="offcanvas" >
+      <span class="hamb-top"></span>
+    	<span class="hamb-middle"></span>
+		  <span class="hamb-bottom"></span>
+    </button>
+    
+    <!--Main Content-->
+    <div class="container">
+      <!--Flash notification-->
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div><!-- page-content-wrapper -->
+</div> <!-- wrapper -->
+<script>
+  var isClosed = false;
+  $('.hamburger').click(function () {
+    if (isClosed == true) {  
+        $('.hamburger').removeClass('is-open');
+        $('.hamburger').addClass('is-closed');
+        isClosed = false;
+      } else {   
+        $('.hamburger').removeClass('is-closed');
+        $('.hamburger').addClass('is-open');
+        isClosed = true;
+      } 
+    });
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  }); 
+</script>
 </body>
 </html>

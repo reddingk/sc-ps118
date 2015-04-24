@@ -1,3 +1,22 @@
-// Place all the styles related to the gerald controller here.
+// Place all the styles related to the Gerald controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.w-link { float: right; }
+
+.go { 
+    color: #00B800; 
+    font-size: 16px;
+}
+.no_go{ 
+    color: #E60000;
+    font-size: 14px;
+}
+.go-link { padding-top: 10px; }
+.go-link , .go-link:hover { color: #FFFFFF; font-size: 16px;}
+
+.gerald-table { width: 100%;}
+.gerald-table th , .gerald-table td { text-align: center; color: #000000; border-bottom: 1px solid #000000;}
+.gerald-table th { color: #ffffff;}
+
+.view-icon2 { color: #ffffff;}

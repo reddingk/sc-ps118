@@ -1,0 +1,69 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+body {font-family: "Comic Sans MS", cursive, sans-serif; }
+p { color: #000000; }
+.navbar-brand { font-size: 24px;}
+.ps-nav-icons0 { width:55px; }
+.ps-nav-icons1 { width:45px;}
+.icon-invert { 
+  filter: invert(100%) !important;
+  -webkit-filter: invert(100%) !important;
+}
+
+.ps-nav-link { padding:0px 10px !important; border-left: 1px solid #ffffff;}
+.ps-nav-more { padding:30px 1px 0px 0px !important;}
+
+.nav-txt { font-size: 16px;}
+
+.dropdown-menu#gerald-drop { background-color: #6CA3D7; }
+.dropdown-menu#brainy-drop { background-color: #B5232B; }
+.dropdown-menu#helga-drop { background-color: #D97987; }
+.dropdown-menu#phoebi-drop { background-color: #E2A83F; }
+
+.gerald-set { color: #6CA3D7; }
+.brainy-set { color: #B5232B; }
+.helga-set { color: #D97987; }
+.phoebi-set { color: #E2A83F; }
+
+.gerald-border { border: 5px solid #6CA3D7;  border-radius: 0px 20px 0px 20px; padding: 10px; box-shadow: 10px 10px 5px #888888;}
+.brainy-border { border: 5px solid #B5232B;  border-radius: 0px 20px 0px 20px;  padding: 10px; box-shadow: 10px 10px 5px #888888;}
+.helga-border { border: 5px solid #D97987;  border-radius: 0px 20px 0px 20px;  padding: 10px; box-shadow: 10px 10px 5px #888888;}
+.phoebi-border { border: 5px solid #E2A83F;  border-radius: 0px 20px 0px 20px;  padding: 10px; box-shadow: 10px 10px 5px #888888;}
+
+.gerald-check { background-color: #6CA3D7; }
+.brainy-check { background-color: #B5232B; }
+.helga-check { background-color: #D97987; }
+.phoebi-check { background-color: #E2A83F; }
+
+/* forms */
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+
+.well {   border-radius: 0px 20px 0px 20px; }
+
+/*User list*/
+.users {
+  width: 100%;
+}
+
+/*L2 Page*/
+.ps-page-icon { width:90px;}
+.row { margin-bottom: 20px;}
+.txt-header { color: #ffffff; font-weight: bold; font-size: 16px;}
+.txt-info > p { margin: 0px 0px 0px 10px; font-weight: bold;}
+.txt-info > p > span { font-weight: normal; }
