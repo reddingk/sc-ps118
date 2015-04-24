@@ -15,21 +15,21 @@
       <li class="sidebar-brand"><a href="#">PS-Sidekick</a></li>                                
       <li><%=link_to "Jada", { controller: "jada", action: "index"}%></li>
       <li><a href="#">Search Google</a></li>
-      <!-- < %if logged_in? %> -->
+      <%if logged_in? %> 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><!--< %= current_user.username %>--> TEST<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li class="dropdown-header">User configerations</li>
-            <!--< % if current_user.admin?  %>
-              <li>< %=link_to "User Management", { controller: "users", action: "index"}%></li>
-            < % end %>-->
+            <% if current_user.admin?  %>
+              <li><%=link_to "User Management", { controller: "users", action: "index"}%></li>
+            <% end %>
             <li><%=link_to "Settings", { controller: "users", action: "settings" }%></li>
             <li><%=link_to "Log out", { controller: "sessions", action: "destroy"}%></li>
           </ul>
         </li>
-      <!--< %else%>
-        <li>< %=link_to "Log in", { controller: "sessions", action: "new"}%></li>
-      < %end%>-->
+      <%else%>
+        <li><%=link_to "Log in", { controller: "sessions", action: "new"}%></li>
+      <%end%>
     </ul>
   </nav>
   
@@ -49,7 +49,7 @@
       
         <div id="navbar" class="navbar-collapse collapse">            
           <ul class="nav navbar-nav navbar-right">
-           <!--< %if logged_in? %>-->
+           <%if logged_in? %>
             <li class="dropdown">
               <a href="" class="dropdown-toggle ps-nav-link" data-toggle="dropdown" role="button" aria-expanded="false"><%=image_tag('Gerald_G.png', class:'ps-nav-icons0', alt:'Gerald Gang') %>
                 <i class="glyphicon glyphicon-th-large"></i></a>
@@ -86,9 +86,9 @@
     	              <li><%=link_to (image_tag('silo/StoopKid.png', class:'ps-nav-icons1', alt:'Stoop Kid')+"Stoop Kid").html_safe, { controller: "gerald", action: "construction"}, class:"navbar-brand nav-txt"%></li>
     	          </ul>
             </li>
-          <!--< %else%>
-            <li>< %=link_to "Log in", { controller: "sessions", action: "new"}%></li>
-          < %end%>-->
+          <%else%>
+            <li><%=link_to "Log in", { controller: "sessions", action: "new"}%></li>
+          <%end%>
           </ul>
         </div><!--/.nav-collapse -->        
         

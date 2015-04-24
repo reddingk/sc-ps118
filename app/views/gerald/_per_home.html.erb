@@ -1,0 +1,74 @@
+<% 
+    @user = User.find(current_user.id)
+    @devices = Device.where("userid = ?", current_user.id)
+    @sfiles =  Sfile.where("userid = ?", current_user.id)
+    
+    @widgets = @user.personal_page.split(",")
+    
+    if @widgets == nil
+      @widgets = ["None", "None", "None", "None"]
+    end
+%>
+
+<div class="w-sections">
+  <% case @widgets[location]
+       when "Arnold" %>
+       <p><%= browser.name %> <%= browser.full_version %>
+        <% if browser.chrome? == true %>
+          <i class='go glyphicon glyphicon-ok'></i></p>
+        <% else %>
+          <i class='no-go glyphicon glyphicon-remove'></i></p>
+        <% end %>
+        
+        <div class="txt-info">
+          <p>Total number of devices: <span><%= @devices.count %></span>
+            <% @devices.each do |device|%>
+              <% if device.dev_type == "PC"%>
+                <i class='glyphicon glyphicon-hdd'></i>
+              <% elsif device.dev_type == "Mobile" %>
+                <i class='glyphicon glyphicon-phone'></i>
+              <% else %>
+                <i class='glyphicon glyphicon-modal-window'></i>
+              <% end %>
+              
+            <% end %>
+          </p>
+          <p>Last device used: <span><%= @devices.order(updated_at: :desc).first.name %></span>
+            <% if @devices.order(updated_at: :desc).first.dev_type == "PC"%>
+              <i class='glyphicon glyphicon-hdd'></i>
+            <% elsif @devices.order(updated_at: :desc).first.dev_type == "Mobile" %>
+              <i class='glyphicon glyphicon-phone'></i>
+            <% else %>
+              <i class='glyphicon glyphicon-modal-window'></i>
+            <% end %>
+          </p>
+        </div>
+        <%=link_to (image_tag('silo/Arnold.png', class:'ps-nav-icons1 icon-invert', alt:'Arnold')).html_safe, { controller: "gerald", action: "arnold"}, class:"navbar-brand w-link"%>
+    <% when "Brainy" %>
+        <% 
+          @largestDevice = @devices.first
+          
+          @devices.each do |device|
+            if @sfiles.where("devid=?", device.id).size > @sfiles.where("devid=?", @largestDevice.id).size
+              @largestDevice = device
+            end
+          end  
+        %>
+        <div class="txt-info">
+          <p>Folder with most files: <span><%= @largestDevice.name %></span></p>
+          <p>Number of files: <span><%= @sfiles.where("devid=?", @largestDevice.id).size %></span></p>
+          <p>Date of last upload: <span><%= @sfiles.where("devid=?", @largestDevice.id).order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal) %></span></p>
+        </div>
+        <%=link_to (image_tag('silo/Brainy.png', class:'ps-nav-icons1 icon-invert', alt:'Brainy')).html_safe, { controller: "brainy", action: "index"}, class:"navbar-brand w-link"%>
+    <% when "Eugene" %> 
+        <div class="txt-info">
+          <p>Last File uploaded: <span><%= @sfiles.order(created_at: :desc).first.name %></span></p>
+          <p>Folder: <span><%= @devices.where("id=?", @sfiles.order(created_at: :desc).first.devid).first.name %></span></p>
+          <p>Uploaded Date: <span><%= @sfiles.order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal) %></span></p>
+          <p><%= link_to ("<i class='glyphicon glyphicon-eye-open'></i>" + " View File").html_safe, {controller: "brainy", action: "view", :fname => @sfiles.order(created_at: :desc).first.syncfile}, :target => "_blank", :class => "view-icon2" %> </p>
+        </div>
+        <%=link_to (image_tag('silo/Eugene.png', class:'ps-nav-icons1 icon-invert', alt:'Eugene')).html_safe, { controller: "brainy", action: "eugene"}, class:"navbar-brand w-link"%>
+    <% else %> 
+        <h4>Sorry You Have Not Selected A PS-Widget For This Area</h4>
+  <% end %>
+</div>

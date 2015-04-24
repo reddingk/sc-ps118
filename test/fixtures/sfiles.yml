@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  userid: 1
+  devid: 1
+  syncfile: MyString
+
+two:
+  name: MyString
+  userid: 1
+  devid: 1
+  syncfile: MyString
