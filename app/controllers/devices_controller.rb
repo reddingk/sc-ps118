@@ -3,6 +3,7 @@ class DevicesController < ApplicationController
     @device = Device.new
   end
   
+  
   def create
     @device = Device.new(device_params)
     if @device.save
