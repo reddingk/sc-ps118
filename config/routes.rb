@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'user_manag/index'
   get 'UserManagement'  => 'users#index'
   get 'users/new'
-  get 'users/edit' 
+  get 'users/edit'
   get 'users/updatehome'
   get 'users/settings' 
   

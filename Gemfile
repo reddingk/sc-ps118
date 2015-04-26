@@ -32,7 +32,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 # File Storage
 gem 'carrierwave'
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.2.0.0'
+gem 'bootstrap-sass', '3.2.0.0'
 
 # Browser information
 gem 'browser'
