@@ -3,10 +3,11 @@
     @devices = Device.where("userid = ?", current_user.id)
     @sfiles =  Sfile.where("userid = ?", current_user.id)
     
-    @widgets = @user.personal_page.split(",")
     
-    if @widgets == nil
+    if @user.personal_page == nil
       @widgets = ["None", "None", "None", "None"]
+    else
+      @widgets = @user.personal_page.split(",")
     end
 %>
 
