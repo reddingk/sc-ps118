@@ -1,2 +1,17 @@
-<h1>Gerald#index</h1>
-<p>Find me in app/views/gerald/index.html.erb</p>
+<% provide(:title, "Gerald") %>
+
+<h1 class="page-title gerald-set"><%= image_tag('silo/Gerald.png', class:'ps-page-icon', alt:'Gerald') %> Gerald</h1>
+
+<%if logged_in? %>
+    <div class="row">
+        <div class="col-md-5 gerald-border gerald-check"><%= render 'per_home', location: 0 %></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 gerald-border gerald-check"><%= render 'per_home', location: 1 %></div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-5 gerald-border gerald-check"><%= render 'per_home', location: 2 %></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6 gerald-border gerald-check"><%= render 'per_home', location: 3 %></div>
+    </div>
+<% end %>

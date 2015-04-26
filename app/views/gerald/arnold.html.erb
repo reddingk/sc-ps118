@@ -1,2 +1,44 @@
-<h1>Gerald#arnold</h1>
-<p>Find me in app/views/gerald/arnold.html.erb</p>
+<% provide(:title, "Arnold") %>
+<h1 class="page-title gerald-set"><%= image_tag('silo/Arnold.png', class:'ps-page-icon', alt:'Arnold') %> Arnold</h1>
+
+<div class="row">
+    <!--Left Section-->
+    <div class="col-md-5 gerald-border gerald-check">
+        <p class= "txt-header">Current Browser information</p>
+        <div class="txt-info">
+            <p>Browser Version: <span><%= browser.name %> <%= browser.full_version %></span></p>
+            <p>Platform: <span><%= browser.platform %>
+                <% if browser.mobile? == true %>
+                    Mobile
+                <% end %></span>
+            </p>
+        </div>
+    </div>
+    <!--Add Space-->
+    <div class="col-md-1"></div>
+    <!--Right Section-->
+    <div class="col-md-6 gerald-border gerald-check">
+       <table class="gerald-table">
+            <tr>
+                <th>Device Name</th>
+                <th>Device Type</th>
+                <th>Date Added</th>
+            </tr>
+            
+            <% @device.each do |device| %>
+            <tr>
+                <td> <%= device.name %>  </td>
+                <td> <%= device.dev_type %> </td>
+                <td> <%= device.created_at.to_formatted_s(:long_ordinal) %> </td>
+            </tr>
+            <% end %>
+       </table>
+       <p><%=link_to "+ Add New Device", { controller: "devices", action: "new"}, class:"w-link go-link" %></p>
+    </div>
+</div>
+
+<!--<div class="row">
+    <div class="col-md-12 gerald-border" ></div>
+</div>-->
+
+<div class="row"></div>

@@ -10,6 +10,5 @@ class GeraldController < ApplicationController
   end
   
   def _per_home
-    
   end
 end
