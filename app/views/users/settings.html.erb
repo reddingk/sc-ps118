@@ -1,0 +1,24 @@
+<% provide(:title, "User Settings") %>
+<h1>User Settings</h1>
+
+<div class="row" id="settings-section">
+    <!-- tabs left -->
+    <div class="tabbable tabs-left">
+        <ul class="nav nav-pills nav-stacked col-md-3">
+            <li class="active"><a href="#a" data-toggle="tab">User Information</a></li>
+            <li><a href="#b" data-toggle="tab">User Home Page</a></li>
+        </ul>
+        <div class="tab-content col-md-9">
+            <div class="tab-pane active" id="a">
+                Edit your user account information such as Username, Password, Email Address, Etc.<br>
+                <%=button_to "Update user info", { controller: "users", action: "edit" }, :method => :get , params:{ userid: current_user.id} , :class => "btn btn-warning col-md-3"%>
+            </div>
+            <div class="tab-pane" id="b">
+                Update your user home page aka Gerald's widgets to your personal liking.<br>
+                <%=button_to "Update Gerald", { controller: "users", action: "updatehome" }, :method => :get , params:{ userid: current_user.id} ,:class => "btn btn-warning col-md-3"%>
+            </div>
+        </div>
+    </div>
+    <!-- /tabs -->
+      
+</div>

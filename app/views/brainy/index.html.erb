@@ -1,0 +1,66 @@
+<% provide(:title, "Brainy") %>
+
+<h1 class="page-title brainy-set"><%= image_tag('silo/Brainy.png', class:'ps-page-icon', alt:'Brainy') %> Brainy</h1>
+
+<div class="row">
+    <!--Top Section-->
+    <div class="col-md-12 brainy-border brainy-check">
+        <p><b><%= current_user.username %></b></p>
+        <table class="table brainy-table">
+            <thead>
+                <tr>
+                    <th>Device</th>
+                    <th># of synced files</th>
+                    <th>Last file sync date</th>
+                    <th>File sync</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @device.each do |device| %>
+                    <tr>
+                        <td><%= device.name %></td>
+                        <td><%= @sfile.where("devid=?", device.id).size %></td>
+                        <td>
+                            <% if @sfile.where("devid=?", device.id).size == 0 %>
+                                None
+                            <% else %>
+                                <%= @sfile.where("devid=?", device.id).order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal) %>
+                            <% end %>
+                        </td>
+                        <td><%=link_to (image_tag('silo/Eugene.png', class:'ps-nav-icons1 icon-invert', alt:'Eugene', title:'Visit Eugene')).html_safe, { controller: "brainy", action: "eugene", devid: device.id} %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 brainy-border" >
+        <ul class="collapsible-list">
+            <% @device.each do |device| %>
+                <li>
+                    <%= image_tag('folder.png', alt:'File-Folder') %>
+                    <label for="<%= device.id %>" id=""> <%= device.name %></label>
+                    
+                    <% if @sfile.where("devid=?", device.id).size == 0 %>
+                        <i class='glyphicon glyphicon-floppy-remove'></i> <span class="no-files">(No Uploaded Files From This Device)</span>
+                    <%else%>
+                        <input type="checkbox" id="<%= device.id %>"/>
+                    <% end %>
+                    <ul class="file-list">
+                        <% @sfile.where("devid=?", device.id).collect do |sfile| %>
+                            <li>
+                                <%= image_tag('file.png', alt:'File-Folder') %>
+                                <%= link_to (sfile.name + " <i class='glyphicon glyphicon-eye-open'></i>").html_safe, {controller: "brainy", action: "view", :fname => sfile.syncfile} , :target => "_blank", :class => "file-icon" %>  
+                            </li>
+                        <% end %>
+                    </ul>
+                    
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+<div class="row"></div>

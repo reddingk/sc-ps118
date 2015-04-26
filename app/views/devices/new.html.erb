@@ -1,0 +1,20 @@
+<% provide(:title, 'Add New Device') %>
+<h1>Add New Device</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@device) do |f| %>
+    <%= render 'shared/error_messages2' %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :dev_type %>
+      <!--< %= f.text_field :dev_type %>-->
+      <%= f.select :dev_type, ['PC', 'Mobile', 'Tablet', 'Other'], :prompt => 'Select Device Type'  %>
+      
+      <%= f.hidden_field :userid  , :value => current_user.id %>
+      
+      <%= f.submit "Add my device", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

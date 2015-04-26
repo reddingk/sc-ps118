@@ -1,0 +1,38 @@
+<% provide(:title, "Update Home Page") %>
+<h1>Update your home page</h1>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+        
+        <div class="personal_widget">
+            <!--< %= f.select :dev_type, ['Arnold', 'Sid', 'Brainy', 'Eugene', 'Helga', 'Chocolate Boy', 'Phoebi', 'Harvey', 'Stoop Kid'], :prompt => 'Select Device Type'  %> -->
+            <h3>Widget 1</h3>
+            <%= select_tag "Widget-1" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[0] }) %>
+            
+            <h3>Widget 2</h3>
+            <%= select_tag "Widget-2" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[1] })  %>
+            
+            <h3>Widget 3</h3>
+            <%= select_tag "Widget-3" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[2] })  %>
+            
+            <h3>Widget 4</h3>
+            <%= select_tag "Widget-4" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[3] })  %>
+        </div>
+        
+        <%= form_for(@user) do |f| %>
+            <%= f.hidden_field :personal_page , class: 'form-control'%>
+            <%= f.submit "Update User Page", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    
+    var mypersonalbox = document.getElementById('user_personal_page');
+    
+    $('.personal_widget > select').change(function(){
+        mypersonalbox.value = document.getElementById('Widget-1').value + "," + document.getElementById('Widget-2').value + "," + document.getElementById('Widget-3').value + "," + document.getElementById('Widget-4').value;
+    });
+});
+</script>
