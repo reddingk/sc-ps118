@@ -4,17 +4,20 @@
 <div class="row">
     <!--Left Section-->
     <div class="col-md-5 brainy-border brainy-check">
-        <%= select("Device_choice", "Device_id", @device.collect {|p| [ p.name, p.id ] }, :selected => @pageid)%>
-        
-        <p><b>Device Type:</b> <%= @device.find(@pageid).dev_type %></p>
-        <p><b>Number of files:</b> <%= @sfile.size %></p>
-        <p><b>Last file sync:</b> 
-          <% if @sfile.size == 0 %>
-            None
-          <% else %>
-            <%= @sfile.order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal)  %>
-          <% end %>
-        </p>
+        <% if @device.size != 0 %>
+          <%= select("Device_choice", "Device_id", @device.collect {|p| [ p.name, p.id ] }, :selected => @pageid)%>
+          <p><b>Device Type:</b> <%= @device.find(@pageid).dev_type %></p>
+          <p><b>Number of files:</b> <%= @sfile.size %></p>
+          <p><b>Last file sync:</b> 
+            <% if @sfile.size == 0 %>
+              None
+            <% else %>
+              <%= @sfile.order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal)  %>
+            <% end %>
+          </p>
+        <% else %>
+          <p><%=link_to "+ Add Device To Upload Files", { controller: "devices", action: "new"}, class:"w-link go-link" %></p>
+        <% end %>
     </div>
     
     <!--Add Space-->
@@ -22,21 +25,25 @@
     
     <!--Right Section-->
     <div class="col-md-6 brainy-border brainy-check">
-        <div class="well">
-          <%= form_for @sfile_u, html: { multipart: true } do |f| %>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-            
-            <%= f.label :syncfile %>
-            <%= f.file_field :syncfile %>
-            
-            
-            <%= f.hidden_field :userid  , :value => current_user.id %>
-            <%= f.hidden_field :devid %>
-            
-            <%= f.submit "Save", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+        <% if @device.size != 0 %>
+          <div class="well">
+            <%= form_for @sfile_u, html: { multipart: true } do |f| %>
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+              
+              <%= f.label :syncfile %>
+              <%= f.file_field :syncfile %>
+              
+              
+              <%= f.hidden_field :userid  , :value => current_user.id %>
+              <%= f.hidden_field :devid %>
+              
+              <%= f.submit "Save", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <%else%>
+          <p>Please add a device to system to begin syncing files</p>
+        <%end%>
     </div>
 </div>
 

@@ -1,0 +1,54 @@
+// Place all the styles related to the brainy controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.over-line{
+            border-color: #ff6000 !important;
+        }
+        
+        #tree-box{
+            border: 1px solid #E7E7E7;
+            border-radius: 6px 6px 6px 6px;
+            margin: 10px 0 10px 0;
+            padding: 20px 10px 20px 10px;
+        }
+        
+        #tree-box ul{
+            list-style: none;
+            margin: 0;
+        }       
+        
+         #tree-box img{
+            vertical-align: middle;
+            margin-right: 4px;
+            border: none;
+        }
+        
+        #tree-box-content
+        {
+            margin-top: 10px;
+            border-top: 1px solid #E7E7E7;
+            padding-top: 10px;
+            padding-left: 16px;
+        }
+        
+        .collapsible-list {list-style: none;}
+        .collapsible-list > li { display: block; font-size: 20px; border-bottom: 1px solid #B5232B;}
+        .collapsible-list > li > label { margin-bottom: 0px; }
+        
+        .collapsible-list > li > .file-list > li { line-height: 22px;}
+        
+        .collapsible-list li > input[type=checkbox] { width: 10%; opacity: 0;}
+        .collapsible-list li > input[type=checkbox] + .file-list > li { display: none; }
+        .collapsible-list li > input[type=checkbox]:checked + .file-list > li { display: block; }
+        
+        .brainy-table th , .brainy-table td, .eugene-table th , .eugene-table td { text-align: center; color: #000000;}
+        .brainy-table th { color: #ffffff; }
+        
+        .eugene-table > thead > tr > th { border-bottom: 2px solid #B5232B !important;}
+        .eugene-table td { border-bottom: 1px solid #B5232B;}
+        
+        .file-icon { font-size: 14px;}
+        .file-icon, .file-icon:hover, .file-icon > i, .file-icon > i :hover {color: #000000; }
+        
+        .file-select { text-decoration: underline; }
+        .no-files { font-size: 12px; }

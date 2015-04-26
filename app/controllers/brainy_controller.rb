@@ -8,7 +8,11 @@ class BrainyController < ApplicationController
      @device = Device.where("userid = ?", current_user.id)
      
      if(params[:devid] == nil)
-      @pageid = @device.first.id 
+       if (@device.size == 0)
+         @pageid = 0
+       else
+        @pageid = @device.first.id 
+       end
      else
        @pageid = params[:devid]
      end

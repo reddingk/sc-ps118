@@ -44,10 +44,11 @@ class UsersController < ApplicationController
   
   def updatehome
     @user = User.find(params[:userid])
-    @widgets = @user.personal_page.split(",")
     
-    if @widgets == nil
+    if @user.personal_page == nil
       @widgets = ["None", "None", "None", "None"]
+    else
+      @widgets = @user.personal_page.split(",")
     end
    
   end

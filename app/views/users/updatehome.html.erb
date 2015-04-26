@@ -7,16 +7,16 @@
         <div class="personal_widget">
             <!--< %= f.select :dev_type, ['Arnold', 'Sid', 'Brainy', 'Eugene', 'Helga', 'Chocolate Boy', 'Phoebi', 'Harvey', 'Stoop Kid'], :prompt => 'Select Device Type'  %> -->
             <h3>Widget 1</h3>
-            <%= select_tag "Widget-1" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[0] }) %>
+            <%= select_tag "Widget-1" , options_for_select( ['None','Arnold', 'Brainy', 'Eugene'], {:selected => @widgets[0] }) %>
             
             <h3>Widget 2</h3>
-            <%= select_tag "Widget-2" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[1] })  %>
+            <%= select_tag "Widget-2" , options_for_select( ['None','Arnold', 'Brainy', 'Eugene'], {:selected => @widgets[1] })  %>
             
             <h3>Widget 3</h3>
-            <%= select_tag "Widget-3" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[2] })  %>
+            <%= select_tag "Widget-3" , options_for_select( ['None','Arnold', 'Brainy', 'Eugene'], {:selected => @widgets[2] })  %>
             
             <h3>Widget 4</h3>
-            <%= select_tag "Widget-4" , options_for_select( ['None','Arnold', 'Sid', 'Brainy', 'Eugene'], {:selected => @widgets[3] })  %>
+            <%= select_tag "Widget-4" , options_for_select( ['None','Arnold', 'Brainy', 'Eugene'], {:selected => @widgets[3] })  %>
         </div>
         
         <%= form_for(@user) do |f| %>
