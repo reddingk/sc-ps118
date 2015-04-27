@@ -1,10 +1,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@font-face {
+  font-family: 'Grinched';
+  src: url( asset_path( 'Grinched.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Black';
+  src: url( asset_path( 'Roboto-Black.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SegoeUi';
+  src: url( asset_path( 'SEGOEUIL.ttf')) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-body {font-family: "Comic Sans MS", cursive, sans-serif; }
-p { color: #000000; }
-.navbar-brand { font-size: 24px;}
+body {font-family: "SegoeUi","Comic Sans MS", cursive, sans-serif; font-size: 16px;}
+
+
+p { color: #000000; font-size: 16px;}
+.navbar-brand { font-size: 24px; font-family: "Grinched";}
 .ps-nav-icons0 { width:55px; }
 .ps-nav-icons1 { width:45px;}
 .icon-invert { 
@@ -15,7 +35,7 @@ p { color: #000000; }
 .ps-nav-link { padding:0px 10px !important; border-left: 1px solid #ffffff;}
 .ps-nav-more { padding:30px 1px 0px 0px !important;}
 
-.nav-txt { font-size: 16px;}
+.nav-txt { font-size: 20px;  font-family: "Grinched";}
 
 .dropdown-menu#gerald-drop { background-color: #6CA3D7; }
 .dropdown-menu#brainy-drop { background-color: #B5232B; }
@@ -36,6 +56,8 @@ p { color: #000000; }
 .brainy-check { background-color: #B5232B; }
 .helga-check { background-color: #D97987; }
 .phoebi-check { background-color: #E2A83F; }
+
+.page-title { font-family: "Grinched";}
 
 /* forms */
 #error_explanation {
@@ -67,3 +89,4 @@ p { color: #000000; }
 .txt-header { color: #ffffff; font-weight: bold; font-size: 16px;}
 .txt-info > p { margin: 0px 0px 0px 10px; font-weight: bold;}
 .txt-info > p > span { font-weight: normal; }
+.dflt-msg { font-weight: bold;}
