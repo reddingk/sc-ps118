@@ -63,7 +63,8 @@
           <%if @largestDevice != nil %>
             <p>Folder with most files: <span><%= @largestDevice.name %></span></p>
             <p>Number of files: <span><%= @sfiles.where("devid=?", @largestDevice.id).size %></span></p>
-            <p>Date of last upload: <span><%= @sfiles.where("devid=?", @largestDevice.id).order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal) %></span></p>
+            <p>Date of last upload: <span><%= @largestDevice.created_at.to_formatted_s(:long_ordinal) %></span></p>
+            <!--<p>Date of last upload: <span>< %= @sfiles.where("devid=?", @largestDevice.id).order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal) %></span></p>-->
           <%else%>
             <p class="dflt-msg"><i class='glyphicon glyphicon-remove-circle'></i> No Devices Currently Synced</p>
           <%end%>
@@ -77,7 +78,7 @@
             <p>Uploaded Date: <span><%= @sfiles.order(created_at: :desc).first.created_at.to_formatted_s(:long_ordinal) %></span></p>
             <p><%= link_to ("<i class='glyphicon glyphicon-eye-open'></i>" + " View File").html_safe, {controller: "brainy", action: "view", :fname => @sfiles.order(created_at: :desc).first.syncfile}, :target => "_blank", :class => "view-icon2" %> </p>
           <%else%>
-            <p class="dflt-msg"><i class='glyphicon glyphicon-remove-circle'></i> No Devices Currently Synced</p>
+            <p class="dflt-msg"><i class='glyphicon glyphicon-floppy-remove'></i> No Files Currently Synced</p>
           <%end%>
         </div>
         <%=link_to (image_tag('silo/Eugene.png', class:'ps-nav-icons1 icon-invert', alt:'Eugene')).html_safe, { controller: "brainy", action: "eugene"}, class:"navbar-brand w-link"%>
