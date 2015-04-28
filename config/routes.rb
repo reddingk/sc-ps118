@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'phoebi/index'
+
 #Gerald
   root 'gerald#index'
 
@@ -25,6 +27,12 @@ Rails.application.routes.draw do
   get 'brainy/view' 
   resources :sfiles
 
+#Helga
+  get 'helga/index'
+
+#Phoebi
+  get 'phoebi/index'
+  
 #User Managament
   get 'user_manag/index'
   get 'UserManagement'  => 'users#index'

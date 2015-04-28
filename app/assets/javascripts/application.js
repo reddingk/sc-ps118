@@ -17,9 +17,7 @@
 //= require bootstrap-sprockets
 
 $(document).ready(function () {
-  
     $('.has-tooltip').tooltip({placement: 'right'});
-     
 });
     
 /*Brainy*/
@@ -234,7 +232,7 @@ function showInfo(s) {
 
 function Jada_Thought(command) {
     
-    var characters = ["gerald","arnold","brainy","eugene", "settings"];
+    var characters = ["gerald","arnold","brainy","eugene","helga","phoebe","settings"];
     var errormessage ="1";
     var c_res = command.split(" ");
     /*Look For Action Word*/
@@ -244,7 +242,7 @@ function Jada_Thought(command) {
             //Visit specific page
             case "visit":
                 
-                var url_control= ["","gerald/arnold","brainy/index","brainy/eugene","users/settings"];
+                var url_control= ["","gerald/arnold","brainy/index","brainy/eugene","helga/index","phoebi/index","users/settings"];
                 if((i+1) != c_res.length){
                     if($.inArray(c_res[i+1].toLowerCase(), characters) > -1)
                     {   

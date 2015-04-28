@@ -1,0 +1,81 @@
+<% provide(:title, "Phoebi") %>
+<h1 class="page-title phoebi-set"><%= image_tag('silo/Phoebi.png', class:'ps-page-icon', alt:'Phoebi') %> Phoebi</h1>
+
+    <!--<h1>getUserMedia API</h1>
+    <video id="video" autoplay="autoplay" controls="true"></video>
+    <div class="buttons-wrapper">
+      <button id="button-play-gum" class="button-demo" href="#">Play demo</button>
+      <button id="button-stop-gum" class="button-demo" href="#">Stop demo</button>
+    </div>
+    <span id="gum-unsupported" class="hidden">API not supported</span>
+    <span id="gum-partially-supported" class="hidden">API partially supported (video only)</span>
+-->
+<div class="row">
+    <div class="col-md-6 phoebi-border phoebi-check">
+        <video id="video" autoplay="autoplay" controls="true"></video>
+        <span id="gum-unsupported" class="hidden">API not supported</span>
+        <span id="gum-partially-supported" class="hidden">API partially supported (video only)</span>
+    </div>
+    
+    <div class="col-md-1"></div>
+    
+    <div class="col-md-4 phoebi-border phoebi-check">
+        <div class="buttons-wrapper">
+          <button id="button-play-gum" class="button-demo btn btn-success" href="#">Record <i class='glyphicon glyphicon-record'></i></button>
+          <button id="button-stop-gum" class="button-demo btn btn-danger" href="#">Stop <i class='glyphicon glyphicon-stop'></i></button>
+        </div>
+    </div>
+</div>    
+    
+<script>
+  var videoStream = null;
+  var video = document.getElementById("video");
+
+  // Test browser support
+  window.navigator = window.navigator || {};
+  navigator.getUserMedia = navigator.getUserMedia       ||
+                           navigator.webkitGetUserMedia ||
+                           navigator.mozGetUserMedia    ||
+                           null;
+ 
+  if (navigator.getUserMedia === null) {
+    document.getElementById('gum-unsupported').classList.remove('hidden');
+    document.getElementById('button-play-gum').setAttribute('disabled', 'disabled');
+    document.getElementById('button-stop-gum').setAttribute('disabled', 'disabled');
+  } else {
+    // Opera <= 12.16 accepts the direct stream.
+    // More on this here: http://dev.opera.com/articles/view/playing-with-html5-video-and-getusermedia-support/
+    var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
+
+    // Opera <= 12.16 support video only.
+    var audioContext = window.AudioContext       ||
+                       window.webkitAudioContext ||
+                       null;
+    if (audioContext === null) {
+      document.getElementById('gum-partially-supported').classList.remove('hidden');
+    }
+ 
+    document.getElementById('button-play-gum').addEventListener('click', function() {
+      // Capture user's audio and video source
+      navigator.getUserMedia({
+        video: true,
+        audio: true
+      },
+      function(stream) {
+        videoStream = stream;
+        // Stream the data
+        video.src = createSrc(stream);
+        video.play();
+      },
+      function(error) {
+        console.log("Video capture error: ", error.code);
+      });
+    });
+    document.getElementById('button-stop-gum').addEventListener('click', function() {
+      // Pause the video
+      video.pause();
+      // Stop the stream
+      videoStream.stop();
+    });
+  }
+</script>

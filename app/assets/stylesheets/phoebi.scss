@@ -1,0 +1,24 @@
+// Place all the styles related to the phoebi controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.buttons-wrapper{   text-align: center;    }
+ 
+.hidden{display: none;    }
+ 
+#video { 
+    display: block;
+    width: 100%;
+    border-radius: 0px 20px 0px 20px;
+}
+ 
+.button-demo{
+    padding: 0.5em;
+    display: inline-block;
+    margin: 1em auto;
+}
+ 
+.author{
+    display: block;
+    margin-top: 1em;
+}
